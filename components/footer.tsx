@@ -14,14 +14,7 @@ const Footer: React.FC = () => (
       letterSpacing: "0.02em",
       fontFamily: "Inter, sans-serif",
     }}
-  >
-    <p style={{ margin: 0 }}>
-      &copy; {new Date().getFullYear()}{" "}
-      <span style={{ color: "#fbbf24", fontWeight: 600 }}>
-        The Backyard Cafe
-      </span>
-    </p>
-  </footer>
+  ></footer>
 );
 
 export default Footer;
