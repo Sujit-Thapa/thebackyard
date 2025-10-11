@@ -99,11 +99,6 @@ const page = () => {
           </button>
         </form>
       </section>
-
-      {/* Footer */}
-      <footer className="w-full py-6 text-center text-green-800">
-        © {new Date().getFullYear()} The Backyard Café. All rights reserved.
-      </footer>
     </div>
   );
 };
