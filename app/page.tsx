@@ -89,11 +89,7 @@ const page = () => {
             placeholder="Your Email"
             className="px-4 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
           />
-          <textarea
-            placeholder="Your Message"
-            className="px-4 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
-            rows={3}
-          />
+         
           <button className="px-6 py-2 bg-green-700 text-white rounded hover:bg-green-800 transition font-semibold">
             Send Message
           </button>
