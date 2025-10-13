@@ -94,6 +94,10 @@ const page = () => {
             className="px-4 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
             rows={3}
           />
+          <label className="flex items-center gap-2 text-green-800">
+            <input type="checkbox" className="accent-green-600" required />I
+            agree to the privacy policy
+          </label>
           <button className="px-6 py-2 bg-green-700 text-white rounded hover:bg-green-800 transition font-semibold">
             Send Message
           </button>
