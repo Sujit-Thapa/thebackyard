@@ -98,7 +98,10 @@ const page = () => {
             <input type="checkbox" className="accent-green-600" required />I
             agree to the privacy policy
           </label>
-          <button className="px-6 py-2 bg-green-700 text-white rounded hover:bg-green-800 transition font-semibold">
+          <button
+            type="submit"
+            className="px-6 py-2 bg-green-700 text-white rounded hover:bg-green-800 transition font-semibold"
+          >
             Send Message
           </button>
         </form>
