@@ -100,7 +100,7 @@ const page = () => {
           </label>
           <button
             type="submit"
-            className="px-6 py-2 bg-green-700 text-white rounded hover:bg-green-800 transition font-semibold"
+            className="px-6 py-2 bg-green-700 text-white rounded-full shadow-lg hover:bg-green-800 transition font-semibold text-lg"
           >
             Send Message
           </button>
