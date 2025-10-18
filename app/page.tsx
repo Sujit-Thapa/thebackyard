@@ -37,14 +37,26 @@ const page = () => {
             Enjoy our daily selection of cakes, pastries, and healthy snacks.
           </p>
         </div>
-        <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
-          <span className="text-4xl mb-2">🌿</span>
+        <div
+          role="article"
+          aria-label="Garden Ambience"
+          className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center transform transition hover:-translate-y-1 hover:shadow-xl"
+        >
+          <span className="text-4xl mb-3" aria-hidden>
+            🌿
+          </span>
           <h2 className="text-xl font-bold text-green-900 mb-2">
             Garden Ambience
           </h2>
-          <p className="text-green-700 text-center">
+          <p className="text-green-700 text-center mb-4">
             Experience tranquility in our lush, plant-filled café space.
           </p>
+          <button
+            type="button"
+            className="px-4 py-2 bg-green-100 text-green-800 rounded-full shadow-sm hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1 text-sm"
+          >
+            Learn More
+          </button>
         </div>
       </section>
 
