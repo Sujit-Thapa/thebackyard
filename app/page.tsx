@@ -33,9 +33,16 @@ const page = () => {
           <h2 className="text-xl font-bold text-green-900 mb-2">
             Homemade Treats
           </h2>
-          <p className="text-green-700 text-center">
+          <p className="text-green-700 text-center mb-4">
             Enjoy our daily selection of cakes, pastries, and healthy snacks.
           </p>
+          <button
+            type="button"
+            className="px-4 py-2 bg-green-100 text-green-800 rounded-full shadow-sm hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1 text-sm"
+            aria-label="View homemade treats"
+          >
+            See Treats
+          </button>
         </div>
         <div
           role="article"
