@@ -1,6 +1,23 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
-const page = () => {
+export default function Page(): JSX.Element {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [agree, setAgree] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Replace with real submit logic (API call, validation, etc.)
+    console.log({ name, email, message, agree });
+    alert("Thanks! Your message has been submitted.");
+    setName("");
+    setEmail("");
+    setMessage("");
+    setAgree(false);
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-50 to-green-200 px-4">
       {/* Hero Section */}
@@ -12,7 +29,10 @@ const page = () => {
           Relax, unwind, and enjoy fresh coffee and homemade treats in our cozy
           garden-inspired café.
         </p>
-        <button className="px-8 py-3 bg-green-700 text-white rounded-full shadow-lg hover:bg-green-800 transition font-semibold text-lg">
+        <button
+          aria-label="View menu"
+          className="px-8 py-3 bg-green-700 text-white rounded-full shadow-lg hover:bg-green-800 transition font-semibold text-lg"
+        >
           View Menu
         </button>
       </section>
@@ -20,7 +40,9 @@ const page = () => {
       {/* Features Section */}
       <section className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-8 py-12">
         <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
-          <span className="text-4xl mb-2">☕</span>
+          <span className="text-4xl mb-2" aria-hidden>
+            ☕
+          </span>
           <h2 className="text-xl font-bold text-green-900 mb-2">
             Fresh Coffee
           </h2>
@@ -28,8 +50,11 @@ const page = () => {
             Sourced locally and brewed to perfection, every cup is a delight.
           </p>
         </div>
+
         <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center">
-          <span className="text-4xl mb-2">🍰</span>
+          <span className="text-4xl mb-2" aria-hidden>
+            🍰
+          </span>
           <h2 className="text-xl font-bold text-green-900 mb-2">
             Homemade Treats
           </h2>
@@ -38,12 +63,13 @@ const page = () => {
           </p>
           <button
             type="button"
+            aria-label="See treats"
             className="px-4 py-2 bg-green-100 text-green-800 rounded-full shadow-sm hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1 text-sm"
-            aria-label="View homemade treats"
           >
             See Treats
           </button>
         </div>
+
         <div
           role="article"
           aria-label="Garden Ambience"
@@ -60,6 +86,7 @@ const page = () => {
           </p>
           <button
             type="button"
+            aria-label="Learn more about ambience"
             className="px-4 py-2 bg-green-100 text-green-800 rounded-full shadow-sm hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1 text-sm"
           >
             Learn More
@@ -97,29 +124,49 @@ const page = () => {
         <p className="text-green-700 mb-6 text-center">
           Have questions or want to book a table? Reach out to us!
         </p>
-        <form className="w-full flex flex-col gap-4">
+        <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="px-4 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
+            aria-label="Your name"
+            required
           />
           <input
             type="email"
             placeholder="Your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="px-4 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
+            aria-label="Your email"
+            required
           />
           <textarea
             placeholder="Your Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             className="px-4 py-2 rounded border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
             rows={3}
+            aria-label="Your message"
+            required
           />
           <label className="flex items-center gap-2 text-green-800">
-            <input type="checkbox" className="accent-green-600" required />I
-            agree to the privacy policy
+            <input
+              type="checkbox"
+              className="accent-green-600"
+              checked={agree}
+              onChange={(e) => setAgree(e.target.checked)}
+              required
+              aria-label="Agree to privacy policy"
+            />
+            I agree to the privacy policy
           </label>
           <button
             type="submit"
             className="px-6 py-2 bg-green-700 text-white rounded-full shadow-lg hover:bg-green-800 transition font-semibold text-lg"
+            aria-label="Send message"
           >
             Send Message
           </button>
@@ -127,6 +174,4 @@ const page = () => {
       </section>
     </div>
   );
-};
-
-export default page;
+}
