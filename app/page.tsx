@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 
 export default function Page(): JSX.Element {
+  const [nwq, setNwq] = useState("");
+  React.useEffect(() => {
+    if (nwq.trim()) console.log("nwq:", nwq);
+  }, [nwq]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
