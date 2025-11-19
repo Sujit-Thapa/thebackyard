@@ -1,4 +1,4 @@
-import React from "react";
+import type { ReactNode } from "react";
 
 export const metadata = {
   title: "The Backyard",
@@ -26,33 +26,35 @@ export const metadata = {
   },
 };
 
-export default function DefaultLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DefaultLayout({ children }: { children: ReactNode }) {
+  const { title, description, keywords, openGraph, twitter } = metadata;
+
   return (
     <html lang="en">
       <head>
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content={metadata.keywords.join(", ")} />
-        <meta property="og:title" content={metadata.openGraph.title} />
-        <meta
-          property="og:description"
-          content={metadata.openGraph.description}
-        />
-        <meta property="og:type" content={metadata.openGraph.type} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:image" content={metadata.openGraph.images[0].url} />
-        <meta name="twitter:card" content={metadata.twitter.card} />
-        <meta name="twitter:title" content={metadata.twitter.title} />
-        <meta
-          name="twitter:description"
-          content={metadata.twitter.description}
-        />
-        <meta name="twitter:image" content={metadata.twitter.images[0]} />
-        <title>{metadata.title}</title>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords.join(", ")} />
+
+        {Object.entries(openGraph).map(([k, v]) =>
+          k === "images" ? null : (
+            <meta key={`og-${k}`} property={`og:${k}`} content={String(v)} />
+          )
+        )}
+        {openGraph.images?.map((img, i) => (
+          <meta key={`og:image${i}`} property="og:image" content={img.url} />
+        ))}
+
+        {Object.entries(twitter).map(([k, v]) =>
+          k === "images" ? null : (
+            <meta key={`tw-${k}`} name={`twitter:${k}`} content={String(v)} />
+          )
+        )}
+        {twitter.images?.map((src, i) => (
+          <meta key={`tw:image${i}`} name="twitter:image" content={src} />
+        ))}
       </head>
+
       <body className="bg-gray-100 text-gray-900">
         <div className="container mx-auto p-4">{children}</div>
       </body>
