@@ -26,6 +26,43 @@ export const metadata = {
   },
 };
 
+const renderMeta = (
+  obj: Record<string, any> = {},
+  prefix = "og",
+  useProperty = true
+) =>
+  Object.entries(obj).flatMap(([k, v]) =>
+    k === "images" ? (
+      Array.isArray(v) ? (
+        v.map((it: any, i: number) =>
+          useProperty ? (
+            <meta
+              key={`${prefix}:image:${i}`}
+              property={`${prefix}:image`}
+              content={it?.url ?? String(it)}
+            />
+          ) : (
+            <meta
+              key={`${prefix}:image:${i}`}
+              name={`${prefix}:image`}
+              content={String(it)}
+            />
+          )
+        )
+      ) : (
+        []
+      )
+    ) : (
+      <meta
+        key={`${prefix}-${k}`}
+        {...(useProperty
+          ? { property: `${prefix}:${k}` }
+          : { name: `${prefix}:${k}` })}
+        content={String(v)}
+      />
+    )
+  );
+
 export default function DefaultLayout({ children }: { children: ReactNode }) {
   const { title, description, keywords, openGraph, twitter } = metadata;
 
@@ -36,23 +73,8 @@ export default function DefaultLayout({ children }: { children: ReactNode }) {
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords.join(", ")} />
 
-        {Object.entries(openGraph).map(([k, v]) =>
-          k === "images" ? null : (
-            <meta key={`og-${k}`} property={`og:${k}`} content={String(v)} />
-          )
-        )}
-        {openGraph.images?.map((img, i) => (
-          <meta key={`og:image${i}`} property="og:image" content={img.url} />
-        ))}
-
-        {Object.entries(twitter).map(([k, v]) =>
-          k === "images" ? null : (
-            <meta key={`tw-${k}`} name={`twitter:${k}`} content={String(v)} />
-          )
-        )}
-        {twitter.images?.map((src, i) => (
-          <meta key={`tw:image${i}`} name="twitter:image" content={src} />
-        ))}
+        {renderMeta(openGraph, "og", true)}
+        {renderMeta(twitter, "twitter", false)}
       </head>
 
       <body className="bg-gray-100 text-gray-900">
