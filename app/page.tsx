@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { JSX, useState } from "react";
 
 export default function Page(): JSX.Element {
   const [nwq, setNwq] = useState("");
