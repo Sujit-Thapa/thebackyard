@@ -69,6 +69,168 @@ export default function Page(): JSX.Element {
             </a>
           </nav>
         </header>
+        <section
+          id="menu"
+          className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-start"
+        >
+          {/* Menu preview */}
+          <div className="md:col-span-2 bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-sm">
+            <div className="flex items-start justify-between">
+              <div>
+                <h2 className="text-xl font-semibold">Menu highlights</h2>
+                <p className="mt-1 text-sm text-gray-500 max-w-prose">
+                  A concise selection of house favorites — thoughtfully prepared
+                  and easy to enjoy.
+                </p>
+              </div>
+              <div className="text-xs text-gray-500">Updated today</div>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-sm font-medium">House Espresso</div>
+                    <div className="text-xs text-gray-500">
+                      Rich, balanced, and nutty
+                    </div>
+                  </div>
+                  <div className="text-sm font-semibold">$3.50</div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-sm font-medium">Cappuccino</div>
+                    <div className="text-xs text-gray-500">
+                      Velvety milk, fine crema
+                    </div>
+                  </div>
+                  <div className="text-sm font-semibold">$4.25</div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-sm font-medium">Seasonal Scone</div>
+                    <div className="text-xs text-gray-500">
+                      Buttery and flaky
+                    </div>
+                  </div>
+                  <div className="text-sm font-semibold">$3.00</div>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-sm font-medium">Matcha Latte</div>
+                    <div className="text-xs text-gray-500">
+                      Ceremonial-grade matcha
+                    </div>
+                  </div>
+                  <div className="text-sm font-semibold">$4.50</div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-sm font-medium">Iced Brew</div>
+                    <div className="text-xs text-gray-500">
+                      Slow drip, bright finish
+                    </div>
+                  </div>
+                  <div className="text-sm font-semibold">$3.75</div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-sm font-medium">Almond Croissant</div>
+                    <div className="text-xs text-gray-500">
+                      Toasted almond filling
+                    </div>
+                  </div>
+                  <div className="text-sm font-semibold">$4.00</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 flex items-center gap-3">
+              <button
+                aria-label="View full menu"
+                className="text-sm px-4 py-2 rounded-md border border-gray-200 hover:bg-gray-50"
+              >
+                View full menu
+              </button>
+              <button
+                aria-label="Order online"
+                className="text-sm px-4 py-2 rounded-md bg-gray-900 text-white hover:bg-gray-800"
+              >
+                Order online
+              </button>
+              <div className="ml-auto text-xs text-gray-500">
+                Vegan and gluten-free options available
+              </div>
+            </div>
+          </div>
+
+          {/* Special card / Quick info */}
+          <aside className="bg-white rounded-2xl p-4 shadow-sm flex flex-col gap-4">
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-md bg-gray-100 grid place-items-center text-gray-700">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden
+                >
+                  <path
+                    d="M3 12h18"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M12 3v18"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div className="text-sm font-semibold">Special of the day</div>
+                <div className="text-xs text-gray-500">
+                  Honey latte — lightly sweetened with local honey
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between text-sm">
+                <div className="text-gray-600">Opening hours</div>
+                <div className="font-medium">8:00 — 16:00</div>
+              </div>
+
+              <div className="flex items-center justify-between text-sm">
+                <div className="text-gray-600">Seating</div>
+                <div className="font-medium">Indoor & Outdoor</div>
+              </div>
+
+              <div className="flex items-center justify-between text-sm">
+                <div className="text-gray-600">Takeaway</div>
+                <div className="font-medium">Available</div>
+              </div>
+            </div>
+
+            <div className="pt-2 mt-auto">
+              <button
+                className="w-full text-sm px-3 py-2 rounded-md bg-green-600 text-white hover:bg-green-500"
+                aria-label="Try special"
+              >
+                Try today's special
+              </button>
+            </div>
+          </aside>
+        </section>
 
         {/* Card */}
         <section className="bg-white rounded-2xl shadow-sm p-8">
