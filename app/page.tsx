@@ -37,7 +37,6 @@ export default function Page(): JSX.Element {
               fill="none"
               aria-hidden
             >
-              <React.Fragment>
               <circle
                 cx="12"
                 cy="12"
