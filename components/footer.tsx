@@ -16,10 +16,4 @@ const Footer: React.FC = () => (
     }}
   ></footer>
 );
-const Page: React.FC = () => (
-  <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-    <main style={{ flex: 1 }}>{/* Page content goes here */}</main>
-    <Footer />
-  </div>
-);
 export default Footer;
