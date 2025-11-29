@@ -1,9 +1,6 @@
 import React from "react";
 
 const Footer: React.FC = () => (
-
-  const react =   {}
-  
   <footer
     style={{
       width: "100%",
