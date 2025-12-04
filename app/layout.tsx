@@ -27,21 +27,7 @@ export const metadata = {
   },
 };
 
-const renderMeta = (
-  obj: Record<string, any> = {},
-  prefix = "og",
-  useProperty = true
-) =>
-  Object.entries(obj).flatMap(([k, v]) =>
-    k === "images" ? (
-      Array.isArray(v) ? (
-        v.map((it: any, i: number) =>
-          useProperty ? (
-            <meta
-              key={`${prefix}:image:${i}`}
-              property={`${prefix}:image`}
-              content={it?.url ?? String(it)}
-            />
+
           ) : (
             <meta
               key={`${prefix}:image:${i}`}
