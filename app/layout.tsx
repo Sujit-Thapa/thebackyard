@@ -19,14 +19,7 @@ export const metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "The Backyard",
-    description: "A place to share and discover new ideas",
-    images: ["https://thebackyard.example.com/og-image.jpg"],
-  },
-};
-
+ 
 const renderMeta = (
   obj: Record<string, any> = {},
   prefix = "og",
