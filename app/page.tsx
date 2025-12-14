@@ -74,7 +74,7 @@ export default function Page(): JSX.Element {
           className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-start"
         >
           {/* Menu preview */}
-          <div className="md:col-span-2 bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-sm">
+          <div className="md:col-span-2 bg-linear-to-br from-white to-gray-50 rounded-2xl p-6 shadow-sm">
             <div className="flex items-start justify-between">
               <div>
                 <h2 className="text-xl font-semibold">Menu highlights</h2>
