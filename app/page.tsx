@@ -105,6 +105,7 @@ export default function Page(): JSX.Element {
                       Velvety milk, fine crema
                     </div>
                   </div>
+                  <div className="text-sm font-semibold">$4.25</div>
                 </div>
 
                 <div className="flex items-center justify-between">
