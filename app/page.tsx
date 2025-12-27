@@ -15,16 +15,6 @@ export default function Page(): JSX.Element {
     }
   }, [status]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log({ name, email, message, agree });
-    setStatus("sent");
-    setName("");
-    setEmail("");
-    setMessage("");
-    setAgree(false);
-  };
-
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center px-6">
       <div className="w-full max-w-3xl">
