@@ -8,6 +8,13 @@ export default function Page(): JSX.Element {
   const [agree, setAgree] = useState(false);
   const [status, setStatus] = useState<"idle" | "sent">("idle");
 
+  useEffect(() => {
+    if (status === "sent") {
+      const t = setTimeout(() => setStatus("idle"), 3000);
+      return () => clearTimeout(t);
+    }
+  }, [status]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log({ name, email, message, agree });
