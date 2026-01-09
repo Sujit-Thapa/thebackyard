@@ -201,6 +201,10 @@ export default function Page(): JSX.Element {
             </div>
           </form>
         </section>
+
+        <footer className="mt-16 text-center text-xs text-zinc-400">
+          © {new Date().getFullYear()} The Backyard
+        </footer>
       </div>
     </main>
   );
