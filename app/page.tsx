@@ -189,10 +189,7 @@ export default function Page(): JSX.Element {
             </label>
 
             <div className="flex justify-between items-center">
-              <button
-                type="submit"
-                className="px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-sm hover:bg-zinc-800 transition"
-              >
+           
                 Send message
               </button>
               <span className="text-xs text-zinc-500">
