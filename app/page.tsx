@@ -134,18 +134,6 @@ export default function Page(): JSX.Element {
           </aside>
         </section>
 
-        {/* Gallery */}
-        <section id="space" className="grid grid-cols-3 gap-4 mb-20">
-          {["cafe1", "cafe2", "cafe3"].map((img) => (
-            <img
-              key={img}
-              src={`/images/${img}.jpg`}
-              alt="Cafe"
-              className="h-40 w-full object-cover rounded-2xl opacity-90 hover:opacity-100 transition"
-            />
-          ))}
-        </section>
-
         {/* Contact */}
         <section
           id="contact"
