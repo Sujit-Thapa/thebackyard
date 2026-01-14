@@ -1,12 +1,14 @@
 "use client";
-import React, { JSX, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
-export default function Page(): JSX.Element {
+export default function Page() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [agree, setAgree] = useState(false);
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (status === "sent") {
@@ -17,12 +19,16 @@ export default function Page(): JSX.Element {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ name, email, message, agree });
-    setStatus("sent");
-    setName("");
-    setEmail("");
-    setMessage("");
-    setAgree(false);
+    setStatus("sending");
+
+    setTimeout(() => {
+      console.log({ name, email, message, agree });
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setMessage("");
+      setAgree(false);
+    }, 1000);
   };
 
   return (
@@ -40,17 +46,33 @@ export default function Page(): JSX.Element {
           </div>
 
           <nav className="hidden sm:flex gap-6 text-sm text-zinc-500">
-            <a href="#menu" className="hover:text-zinc-900 transition">
-              Menu
-            </a>
-            <a href="#space" className="hover:text-zinc-900 transition">
-              Space
-            </a>
-            <a href="#contact" className="hover:text-zinc-900 transition">
-              Contact
-            </a>
+            {["menu", "space", "contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item}`}
+                className="hover:text-zinc-900 transition"
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </a>
+            ))}
           </nav>
+
+          {/* Mobile menu */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="sm:hidden text-sm border px-3 py-1.5 rounded-lg"
+          >
+            Menu
+          </button>
         </header>
+
+        {menuOpen && (
+          <div className="sm:hidden mb-10 flex flex-col gap-4 text-sm text-zinc-600">
+            <a href="#menu">Menu</a>
+            <a href="#space">Space</a>
+            <a href="#contact">Contact</a>
+          </div>
+        )}
 
         {/* Hero */}
         <section className="mb-20 max-w-2xl">
@@ -92,7 +114,10 @@ export default function Page(): JSX.Element {
                 ["Iced Brew", "$3.75"],
                 ["Almond Croissant", "$4.00"],
               ].map(([item, price]) => (
-                <div key={item} className="flex justify-between text-sm">
+                <div
+                  key={item}
+                  className="flex justify-between text-sm border-b border-zinc-100 pb-2"
+                >
                   <span className="font-medium">{item}</span>
                   <span className="text-zinc-500">{price}</span>
                 </div>
@@ -114,18 +139,16 @@ export default function Page(): JSX.Element {
             </div>
 
             <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Hours</span>
-                <span>8:00 – 16:00</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Seating</span>
-                <span>Indoor & Outdoor</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Takeaway</span>
-                <span>Available</span>
-              </div>
+              {[
+                ["Hours", "8:00 – 16:00"],
+                ["Seating", "Indoor & Outdoor"],
+                ["Takeaway", "Available"],
+              ].map(([k, v]) => (
+                <div key={k} className="flex justify-between">
+                  <span className="text-zinc-500">{k}</span>
+                  <span>{v}</span>
+                </div>
+              ))}
             </div>
 
             <button className="mt-auto px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-sm hover:bg-emerald-500 transition">
@@ -137,12 +160,17 @@ export default function Page(): JSX.Element {
         {/* Gallery */}
         <section id="space" className="grid grid-cols-3 gap-4 mb-20">
           {["cafe1", "cafe2", "cafe3"].map((img) => (
-            <img
+            <div
               key={img}
-              src={`/images/${img}.jpg`}
-              alt="Cafe"
-              className="h-40 w-full object-cover rounded-2xl opacity-90 hover:opacity-100 transition"
-            />
+              className="relative h-40 rounded-2xl overflow-hidden"
+            >
+              <Image
+                src={`/images/${img}.jpg`}
+                alt="Cafe"
+                fill
+                className="object-cover hover:scale-105 transition"
+              />
+            </div>
           ))}
         </section>
 
@@ -159,7 +187,7 @@ export default function Page(): JSX.Element {
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900/10"
+              className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm focus:ring-2 focus:ring-zinc-900/10 outline-none"
             />
             <input
               required
@@ -167,7 +195,7 @@ export default function Page(): JSX.Element {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900/10"
+              className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm focus:ring-2 focus:ring-zinc-900/10 outline-none"
             />
             <textarea
               required
@@ -175,7 +203,7 @@ export default function Page(): JSX.Element {
               placeholder="Message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900/10"
+              className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm focus:ring-2 focus:ring-zinc-900/10 outline-none"
             />
 
             <label className="flex items-center gap-2 text-xs text-zinc-500">
@@ -190,10 +218,11 @@ export default function Page(): JSX.Element {
 
             <div className="flex justify-between items-center">
               <button
+                disabled={status === "sending"}
                 type="submit"
-                className="px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-sm hover:bg-zinc-800 transition"
+                className="px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-sm hover:bg-zinc-800 disabled:opacity-60 transition"
               >
-                Send message
+                {status === "sending" ? "Sending..." : "Send message"}
               </button>
               <span className="text-xs text-zinc-500">
                 {status === "sent" ? "Message sent ✓" : "We reply within 24h"}
