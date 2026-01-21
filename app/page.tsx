@@ -224,9 +224,6 @@ export default function Page() {
               >
                 {status === "sending" ? "Sending..." : "Send message"}
               </button>
-              <span className="text-xs text-zinc-500">
-                {status === "sent" ? "Message sent ✓" : "We reply within 24h"}
-              </span>
             </div>
           </form>
         </section>
