@@ -19,5 +19,13 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
     );
   };
 
-  
+  return (
+    <div className="carousel">
+      <button onClick={prevSlide}>&lt;</button>
+      <img src={images[currentIndex]} alt={`Slide ${currentIndex}`} />
+      <button onClick={nextSlide}>&gt;</button>
+    </div>
+  );
+};
+
 export default Carousel;
