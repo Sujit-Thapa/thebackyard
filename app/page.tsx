@@ -10,13 +10,6 @@ export default function Page() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (status === "sent") {
-      const t = setTimeout(() => setStatus("idle"), 3000);
-      return () => clearTimeout(t);
-    }
-  }, [status]);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
