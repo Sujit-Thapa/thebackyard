@@ -10,6 +10,19 @@ export default function Page() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    setTimeout(() => {
+      console.log({ name, email, message, agree });
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setMessage("");
+      setAgree(false);
+    }, 1000);
+  };
 
   return (
     <main className="min-h-screen bg-white text-zinc-900 px-6 py-10">
