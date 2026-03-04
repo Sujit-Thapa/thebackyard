@@ -44,18 +44,6 @@ export default function Page() {
             </span>
           </div>
 
-          <nav className="hidden sm:flex gap-6 text-sm text-zinc-500">
-            {["menu", "space", "contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item}`}
-                className="hover:text-zinc-900 transition"
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </a>
-            ))}
-          </nav>
-
           {/* Mobile menu */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
