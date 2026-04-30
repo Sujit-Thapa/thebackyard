@@ -43,7 +43,6 @@ export default function Page() {
               The Backyard
             </span>
           </div>
-
           <nav className="hidden sm:flex gap-6 text-sm text-zinc-500">
             {["menu", "space", "contact"].map((item) => (
               <a
@@ -55,7 +54,7 @@ export default function Page() {
               </a>
             ))}
           </nav>
-
+          clear
           {/* Mobile menu */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
