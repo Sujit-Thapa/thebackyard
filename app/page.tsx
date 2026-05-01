@@ -39,6 +39,9 @@ export default function Page() {
             <div className="w-9 h-9 rounded-full border border-zinc-300 grid place-items-center">
               ☕
             </div>
+            <span className="text-lg font-semibold tracking-tight">
+              The Backyard
+            </span>
           </div>
           <nav className="hidden sm:flex gap-6 text-sm text-zinc-500">
             {["menu", "space", "contact"].map((item) => (
