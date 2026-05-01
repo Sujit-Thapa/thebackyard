@@ -23,6 +23,7 @@ export default function Page() {
       setAgree(false);
     }, 1000);
   };
+
   useEffect(() => {
     if (status === "sent") {
       const timer = setTimeout(() => setStatus("idle"), 3000);
