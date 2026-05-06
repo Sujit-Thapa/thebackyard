@@ -24,6 +24,8 @@ export default function Page() {
     }, 1000);
   };
 
+
+  
   useEffect(() => {
     if (status === "sent") {
       const timer = setTimeout(() => setStatus("idle"), 3000);
