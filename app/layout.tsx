@@ -5,12 +5,12 @@ declare module "*.css";
 import "./tailwind.css";
 
 export const metadata = {
-  title: "The Backyard",
-  description: "A place to share and discover new ideas",
-  keywords: ["ideas", "community", "sharing", "discovery", "The Backyard"],
+  title: "The Backyard - Specialty Coffee & Cafe",
+  description: "A minimalist sanctuary for exceptional coffee, pastries, and meaningful moments. Open for quiet work and connection.",
+  keywords: ["cafe", "coffee", "specialty coffee", "minimalist", "The Backyard"],
   openGraph: {
     title: "The Backyard",
-    description: "A place to share and discover new ideas",
+    description: "Minimal coffee culture. Exceptional experience.",
     type: "website",
     url: "https://thebackyard.example.com",
     images: [
@@ -18,14 +18,14 @@ export const metadata = {
         url: "https://thebackyard.example.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "The Backyard Logo",
+        alt: "The Backyard Cafe",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Backyard",
-    description: "A place to share and discover new ideas",
+    description: "Minimal coffee culture. Exceptional experience.",
     images: ["https://thebackyard.example.com/og-image.jpg"],
   },
 };
@@ -74,8 +74,8 @@ export default function DefaultLayout({ children }: { children: ReactNode }) {
         {renderMeta(openGraph, "og", true)}
         {renderMeta(twitter, "twitter", false)}
       </head>
-      <body className="bg-gray-100 text-gray-900">
-        <div className="container mx-auto p-4">{children}</div>
+      <body className="bg-white text-gray-900 font-sans">
+        {children}
       </body>
     </html>
   );
