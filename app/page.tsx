@@ -1,26 +1,21 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Footer from "@/components/footer";
 
 export default function Page() {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [agree, setAgree] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
 
     setTimeout(() => {
-      console.log({ name, email, message, agree });
+      console.log({ email });
       setStatus("sent");
-      setName("");
       setEmail("");
-      setMessage("");
-      setAgree(false);
     }, 1000);
   };
 
@@ -32,204 +27,266 @@ export default function Page() {
   }, [status]);
 
   return (
-    <main className="min-h-screen bg-white text-zinc-900 px-6 py-10">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <header className="flex items-center justify-between mb-16">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full border border-zinc-300 grid place-items-center">
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full border-2 border-gray-900 grid place-items-center text-lg">
               ☕
             </div>
-            <span className="text-lg font-semibold tracking-tight">
-              The Backyard
-            </span>
+            <span className="text-lg font-light tracking-wide">The Backyard</span>
           </div>
-          <nav className="hidden sm:flex gap-6 text-sm text-zinc-500">
-            {["menu", "space", "contact"].map((item) => (
+          
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-8 text-sm">
+            {[
+              { name: "About", href: "#about" },
+              { name: "Menu", href: "#menu" },
+              { name: "Space", href: "#space" },
+              { name: "Contact", href: "#contact" },
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item}`}
-                className="hover:text-zinc-900 transition"
+                key={item.name}
+                href={item.href}
+                className="text-gray-600 hover:text-gray-900 transition"
               >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
+                {item.name}
               </a>
             ))}
-          </nav>
-          clear
-          {/* Mobile menu */}
+          </div>
+
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="sm:hidden text-sm border px-3 py-1.5 rounded-lg"
+            className="md:hidden text-sm border border-gray-300 rounded px-3 py-1.5 hover:bg-gray-50 transition"
           >
-            Menu
+            {menuOpen ? "Close" : "Menu"}
           </button>
-        </header>
+        </div>
 
+        {/* Mobile Menu */}
         {menuOpen && (
-          <div className="sm:hidden mb-10 flex flex-col gap-4 text-sm text-zinc-600">
-            <a href="#menu">Menu</a>
-            <a href="#space">Space</a>
-            <a href="#contact">Contact</a>
+          <div className="md:hidden border-t border-gray-100 bg-white">
+            <div className="max-w-6xl mx-auto px-6 py-4 space-y-3">
+              {[
+                { name: "About", href: "#about" },
+                { name: "Menu", href: "#menu" },
+                { name: "Space", href: "#space" },
+                { name: "Contact", href: "#contact" },
+              ].map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block text-gray-600 hover:text-gray-900 transition py-2"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
           </div>
         )}
+      </nav>
 
-        {/* Hero */}
-        <section className="mb-20 max-w-2xl">
-          <h1 className="text-4xl font-semibold tracking-tight leading-tight">
-            A calm place for coffee and conversation
-          </h1>
-          <p className="mt-4 text-[15px] text-zinc-500 leading-relaxed">
-            Minimal, mindful, and freshly brewed. Come for a quiet moment or
-            take a cup to go.
+      {/* Hero Section */}
+      <section className="flex-1 flex items-center justify-center py-32 px-6">
+        <div className="text-center max-w-2xl">
+          <p className="text-sm tracking-widest text-gray-500 uppercase mb-4">
+            Welcome to
           </p>
-
-          <div className="mt-6 flex gap-3">
-            <button className="px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-sm hover:bg-zinc-800 transition">
-              Book a table
+          <h1 className="text-6xl md:text-7xl font-light mb-6 leading-tight tracking-tight">
+            The Backyard
+          </h1>
+          <p className="text-xl text-gray-600 font-light leading-relaxed mb-8">
+            A quiet sanctuary for exceptional coffee, fresh pastries, and meaningful conversations. Where every cup is crafted with intention.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+              Visit us today
             </button>
-            <button className="px-5 py-2.5 rounded-xl border border-zinc-200 text-sm hover:bg-zinc-100 transition">
+            <button className="px-8 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm font-medium">
               View menu
             </button>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Menu */}
-        <section
-          id="menu"
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
-        >
-          <div className="md:col-span-2 bg-white rounded-3xl p-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)]">
-            <h2 className="text-xl font-semibold mb-1">Menu highlights</h2>
-            <p className="text-sm text-zinc-500 mb-8">
-              A small selection of house favorites.
-            </p>
+      {/* About Section */}
+      <section id="about" className="py-20 px-6 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-light mb-6">About us</h2>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                The Backyard was born from a simple belief: that coffee is more than just a beverage. It's a moment. A pause. A connection.
+              </p>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                We source the finest beans from specialty roasters, prepare every drink with care, and create a space where you can focus, relax, or simply be.
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                No noise. No rush. Just intentional craft and genuine hospitality.
+              </p>
+            </div>
+            <div className="h-80 bg-gradient-to-br from-amber-100 to-orange-50 rounded-2xl flex items-center justify-center text-5xl">
+              ☕
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="grid sm:grid-cols-2 gap-6">
+      {/* Menu Section */}
+      <section id="menu" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-light mb-4">Menu highlights</h2>
+          <p className="text-gray-600 mb-12">Carefully curated selection of our finest offerings.</p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Coffee */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold">Espresso Drinks</h3>
               {[
-                ["House Espresso", "$3.50"],
-                ["Cappuccino", "$4.25"],
-                ["Seasonal Scone", "$3.00"],
-                ["Matcha Latte", "$4.50"],
-                ["Iced Brew", "$3.75"],
-                ["Almond Croissant", "$4.00"],
-              ].map(([item, price]) => (
-                <div
-                  key={item}
-                  className="flex justify-between text-sm border-b border-zinc-100 pb-2"
-                >
-                  <span className="font-medium">{item}</span>
-                  <span className="text-zinc-500">{price}</span>
+                { name: "House Espresso", desc: "Single or double shot", price: "$3.50" },
+                { name: "Cappuccino", desc: "Perfectly balanced milk and espresso", price: "$4.25" },
+                { name: "Flat White", desc: "Velvety microfoam", price: "$4.50" },
+                { name: "Cortado", desc: "1:1 espresso and steamed milk", price: "$3.75" },
+                { name: "Iced Americano", desc: "Crisp and refreshing", price: "$4.00" },
+              ].map((item) => (
+                <div key={item.name} className="flex justify-between items-start pb-4 border-b border-gray-100">
+                  <div>
+                    <p className="font-medium">{item.name}</p>
+                    <p className="text-sm text-gray-500">{item.desc}</p>
+                  </div>
+                  <p className="font-medium text-gray-900">{item.price}</p>
                 </div>
               ))}
             </div>
 
-            <button className="mt-10 px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-sm hover:bg-zinc-800 transition">
-              Order online
-            </button>
+            {/* Pastries & Other */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold">Pastries & More</h3>
+              {[
+                { name: "Croissant", desc: "Buttery and fresh daily", price: "$3.50" },
+                { name: "Seasonal Scone", desc: "With clotted cream & jam", price: "$4.50" },
+                { name: "Blueberry Muffin", desc: "House-baked", price: "$3.75" },
+                { name: "Matcha Latte", desc: "Ceremonial grade matcha", price: "$5.00" },
+                { name: "Honey Latte", desc: "Today's special", price: "$4.75" },
+              ].map((item) => (
+                <div key={item.name} className="flex justify-between items-start pb-4 border-b border-gray-100">
+                  <div>
+                    <p className="font-medium">{item.name}</p>
+                    <p className="text-sm text-gray-500">{item.desc}</p>
+                  </div>
+                  <p className="font-medium text-gray-900">{item.price}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Info Card */}
-          <aside className="bg-white rounded-3xl p-6 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] flex flex-col gap-6">
+          <button className="mt-12 px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
+            See full menu
+          </button>
+        </div>
+      </section>
+
+      {/* Space Section */}
+      <section id="space" className="py-20 px-6 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-light mb-4">Our space</h2>
+          <p className="text-gray-600 mb-12">Designed for quiet focus and authentic connection.</p>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {[
+              { icon: "🪑", title: "Comfortable seating", desc: "Carefully chosen furniture for hours of work or relaxation" },
+              { icon: "📶", title: "Fast WiFi", desc: "Reliable connection for remote workers and students" },
+              { icon: "🤫", title: "Quiet environment", desc: "Soft music and minimal noise for focus" },
+            ].map((feature) => (
+              <div key={feature.title} className="p-6 border border-gray-200 rounded-xl hover:border-gray-300 transition">
+                <p className="text-3xl mb-3">{feature.icon}</p>
+                <h3 className="font-semibold mb-2">{feature.title}</h3>
+                <p className="text-sm text-gray-600">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {[1, 2, 3].map((img) => (
+              <div key={img} className="h-64 bg-gray-200 rounded-xl overflow-hidden relative group">
+                <div className="w-full h-full bg-gradient-to-br from-amber-200 to-orange-100 flex items-center justify-center text-6xl">
+                  {["🌿", "☕", "🍃"][img - 1]}
+                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Info Section */}
+      <section className="py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <div className="text-sm font-semibold">Today’s special</div>
-              <div className="text-sm text-zinc-500">
-                Honey latte with local honey
+              <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">Hours</h3>
+              <div className="space-y-2 text-gray-600">
+                <p>Monday – Friday</p>
+                <p className="font-medium text-gray-900">7:00 AM – 6:00 PM</p>
+                <p className="mt-3">Saturday – Sunday</p>
+                <p className="font-medium text-gray-900">8:00 AM – 5:00 PM</p>
               </div>
             </div>
-
-            <div className="space-y-2 text-sm">
-              {[
-                ["Hours", "8:00 – 16:00"],
-                ["Seating", "Indoor & Outdoor"],
-                ["Takeaway", "Available"],
-              ].map(([k, v]) => (
-                <div key={k} className="flex justify-between">
-                  <span className="text-zinc-500">{k}</span>
-                  <span>{v}</span>
-                </div>
-              ))}
+            <div>
+              <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">Location</h3>
+              <div className="space-y-2 text-gray-600">
+                <p className="font-medium text-gray-900">123 Backyard Lane</p>
+                <p>Downtown District</p>
+                <p>Perfect for walking distance</p>
+              </div>
             </div>
-
-            <button className="mt-auto px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-sm hover:bg-emerald-500 transition">
-              Try today’s special
-            </button>
-          </aside>
-        </section>
-
-        {/* Gallery */}
-        <section id="space" className="grid grid-cols-3 gap-4 mb-20">
-          {["cafe1", "cafe2", "cafe3"].map((img) => (
-            <div
-              key={img}
-              className="relative h-40 rounded-2xl overflow-hidden"
-            >
-              <Image
-                src={`/images/${img}.jpg`}
-                alt="Cafe"
-                fill
-                className="object-cover hover:scale-105 transition"
-              />
+            <div>
+              <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">Contact</h3>
+              <div className="space-y-2 text-gray-600">
+                <p className="font-medium text-gray-900">(555) 123-4567</p>
+                <p>hello@thebackyard.cafe</p>
+                <p>Reserve a seat in advance</p>
+              </div>
             </div>
-          ))}
-        </section>
+          </div>
+        </div>
+      </section>
 
-        {/* Contact */}
-        <section
-          id="contact"
-          className="max-w-xl bg-white rounded-3xl p-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)]"
-        >
-          <h2 className="text-lg font-semibold mb-4">Contact</h2>
+      {/* Newsletter Section */}
+      <section id="contact" className="py-20 px-6 bg-gray-900 text-white">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-4xl font-light mb-4">Stay updated</h2>
+          <p className="text-gray-300 mb-8">Get news about new menu items, events, and specials delivered to your inbox.</p>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <input
-              required
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm focus:ring-2 focus:ring-zinc-900/10 outline-none"
-            />
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
             <input
               required
               type="email"
-              placeholder="Email"
+              placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm focus:ring-2 focus:ring-zinc-900/10 outline-none"
+              className="flex-1 px-5 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/20 transition"
             />
-            <textarea
-              required
-              rows={3}
-              placeholder="Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm focus:ring-2 focus:ring-zinc-900/10 outline-none"
-            />
-
-            <label className="flex items-center gap-2 text-xs text-zinc-500">
-              <input
-                type="checkbox"
-                checked={agree}
-                onChange={(e) => setAgree(e.target.checked)}
-                required
-              />
-              I agree to the privacy policy
-            </label>
-
-            <div className="flex justify-between items-center">
-              <button
-                disabled={status === "sending"}
-                type="submit"
-                className="px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-sm hover:bg-zinc-800 disabled:opacity-60 transition"
-              >
-                {status === "sending" ? "Sending..." : "Send message"}
-              </button>
-              <span className="text-xs text-zinc-500">
-                {status === "sent" ? "Message sent ✓" : "We reply within 24h"}
-              </span>
-            </div>
+            <button
+              disabled={status === "sending"}
+              type="submit"
+              className="px-6 py-3 bg-white text-gray-900 rounded-lg hover:bg-gray-100 disabled:opacity-60 transition font-medium"
+            >
+              {status === "sending" ? "Sending..." : "Subscribe"}
+            </button>
           </form>
-        </section>
-      </div>
-    </main>
+          
+          {status === "sent" && (
+            <p className="mt-3 text-sm text-green-300">✓ Thanks for subscribing!</p>
+          )}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+    </div>
   );
 }

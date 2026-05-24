@@ -14,27 +14,26 @@ const Hero: React.FC<HeroProps> = ({
   children,
 }) => (
   <section
-    style={{
-      background: backgroundImage
-        ? `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(${backgroundImage}) center/cover`
-        : "#fafbfc",
-      padding: "5rem 1rem",
-      color: "#fff",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      minHeight: "40vh",
-      textAlign: "center",
-    }}
+    className={`relative w-full py-24 px-6 flex flex-col items-center justify-center text-center ${
+      backgroundImage ? "bg-cover bg-center" : "bg-gradient-to-b from-gray-50 to-white"
+    }`}
+    style={backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : {}}
   >
-    <h1 style={{ fontSize: "2.5rem", fontWeight: 700, margin: 0 }}>{title}</h1>
-    {subtitle && (
-      <p style={{ fontSize: "1.2rem", fontWeight: 400, margin: "1rem 0 0" }}>
-        {subtitle}
-      </p>
+    {backgroundImage && (
+      <div className="absolute inset-0 bg-black/30" />
     )}
-    {children && <div style={{ marginTop: "2rem" }}>{children}</div>}
+    
+    <div className="relative max-w-3xl mx-auto">
+      <h1 className="text-5xl md:text-6xl font-light tracking-tight leading-tight mb-6">
+        {title}
+      </h1>
+      {subtitle && (
+        <p className="text-lg text-gray-600 font-light leading-relaxed">
+          {subtitle}
+        </p>
+      )}
+      {children && <div className="mt-8">{children}</div>}
+    </div>
   </section>
 );
 
