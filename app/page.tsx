@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Footer from "@/components/footer";
 
 export default function Page() {
   const [email, setEmail] = useState("");
