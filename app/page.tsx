@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Footer from "@/components/footer";
 
 export default function Page() {
   const [email, setEmail] = useState("");
@@ -35,9 +34,11 @@ export default function Page() {
             <div className="w-8 h-8 rounded-full border-2 border-gray-900 grid place-items-center text-lg">
               ☕
             </div>
-            <span className="text-lg font-light tracking-wide">The Backyard</span>
+            <span className="text-lg font-light tracking-wide">
+              The Backyard
+            </span>
           </div>
-          
+
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-8 text-sm">
             {[
@@ -99,7 +100,8 @@ export default function Page() {
             The Backyard
           </h1>
           <p className="text-xl text-gray-600 font-light leading-relaxed mb-8">
-            A quiet sanctuary for exceptional coffee, fresh pastries, and meaningful conversations. Where every cup is crafted with intention.
+            A quiet sanctuary for exceptional coffee, fresh pastries, and
+            meaningful conversations. Where every cup is crafted with intention.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
@@ -119,13 +121,17 @@ export default function Page() {
             <div>
               <h2 className="text-4xl font-light mb-6">About us</h2>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                The Backyard was born from a simple belief: that coffee is more than just a beverage. It's a moment. A pause. A connection.
+                The Backyard was born from a simple belief: that coffee is more
+                than just a beverage. It's a moment. A pause. A connection.
               </p>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                We source the finest beans from specialty roasters, prepare every drink with care, and create a space where you can focus, relax, or simply be.
+                We source the finest beans from specialty roasters, prepare
+                every drink with care, and create a space where you can focus,
+                relax, or simply be.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                No noise. No rush. Just intentional craft and genuine hospitality.
+                No noise. No rush. Just intentional craft and genuine
+                hospitality.
               </p>
             </div>
             <div className="h-80 bg-gradient-to-br from-amber-100 to-orange-50 rounded-2xl flex items-center justify-center text-5xl">
@@ -139,20 +145,45 @@ export default function Page() {
       <section id="menu" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-light mb-4">Menu highlights</h2>
-          <p className="text-gray-600 mb-12">Carefully curated selection of our finest offerings.</p>
+          <p className="text-gray-600 mb-12">
+            Carefully curated selection of our finest offerings.
+          </p>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Coffee */}
             <div className="space-y-6">
               <h3 className="text-lg font-semibold">Espresso Drinks</h3>
               {[
-                { name: "House Espresso", desc: "Single or double shot", price: "$3.50" },
-                { name: "Cappuccino", desc: "Perfectly balanced milk and espresso", price: "$4.25" },
-                { name: "Flat White", desc: "Velvety microfoam", price: "$4.50" },
-                { name: "Cortado", desc: "1:1 espresso and steamed milk", price: "$3.75" },
-                { name: "Iced Americano", desc: "Crisp and refreshing", price: "$4.00" },
+                {
+                  name: "House Espresso",
+                  desc: "Single or double shot",
+                  price: "$3.50",
+                },
+                {
+                  name: "Cappuccino",
+                  desc: "Perfectly balanced milk and espresso",
+                  price: "$4.25",
+                },
+                {
+                  name: "Flat White",
+                  desc: "Velvety microfoam",
+                  price: "$4.50",
+                },
+                {
+                  name: "Cortado",
+                  desc: "1:1 espresso and steamed milk",
+                  price: "$3.75",
+                },
+                {
+                  name: "Iced Americano",
+                  desc: "Crisp and refreshing",
+                  price: "$4.00",
+                },
               ].map((item) => (
-                <div key={item.name} className="flex justify-between items-start pb-4 border-b border-gray-100">
+                <div
+                  key={item.name}
+                  className="flex justify-between items-start pb-4 border-b border-gray-100"
+                >
                   <div>
                     <p className="font-medium">{item.name}</p>
                     <p className="text-sm text-gray-500">{item.desc}</p>
@@ -166,13 +197,36 @@ export default function Page() {
             <div className="space-y-6">
               <h3 className="text-lg font-semibold">Pastries & More</h3>
               {[
-                { name: "Croissant", desc: "Buttery and fresh daily", price: "$3.50" },
-                { name: "Seasonal Scone", desc: "With clotted cream & jam", price: "$4.50" },
-                { name: "Blueberry Muffin", desc: "House-baked", price: "$3.75" },
-                { name: "Matcha Latte", desc: "Ceremonial grade matcha", price: "$5.00" },
-                { name: "Honey Latte", desc: "Today's special", price: "$4.75" },
+                {
+                  name: "Croissant",
+                  desc: "Buttery and fresh daily",
+                  price: "$3.50",
+                },
+                {
+                  name: "Seasonal Scone",
+                  desc: "With clotted cream & jam",
+                  price: "$4.50",
+                },
+                {
+                  name: "Blueberry Muffin",
+                  desc: "House-baked",
+                  price: "$3.75",
+                },
+                {
+                  name: "Matcha Latte",
+                  desc: "Ceremonial grade matcha",
+                  price: "$5.00",
+                },
+                {
+                  name: "Honey Latte",
+                  desc: "Today's special",
+                  price: "$4.75",
+                },
               ].map((item) => (
-                <div key={item.name} className="flex justify-between items-start pb-4 border-b border-gray-100">
+                <div
+                  key={item.name}
+                  className="flex justify-between items-start pb-4 border-b border-gray-100"
+                >
                   <div>
                     <p className="font-medium">{item.name}</p>
                     <p className="text-sm text-gray-500">{item.desc}</p>
@@ -193,15 +247,32 @@ export default function Page() {
       <section id="space" className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-light mb-4">Our space</h2>
-          <p className="text-gray-600 mb-12">Designed for quiet focus and authentic connection.</p>
+          <p className="text-gray-600 mb-12">
+            Designed for quiet focus and authentic connection.
+          </p>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {[
-              { icon: "🪑", title: "Comfortable seating", desc: "Carefully chosen furniture for hours of work or relaxation" },
-              { icon: "📶", title: "Fast WiFi", desc: "Reliable connection for remote workers and students" },
-              { icon: "🤫", title: "Quiet environment", desc: "Soft music and minimal noise for focus" },
+              {
+                icon: "🪑",
+                title: "Comfortable seating",
+                desc: "Carefully chosen furniture for hours of work or relaxation",
+              },
+              {
+                icon: "📶",
+                title: "Fast WiFi",
+                desc: "Reliable connection for remote workers and students",
+              },
+              {
+                icon: "🤫",
+                title: "Quiet environment",
+                desc: "Soft music and minimal noise for focus",
+              },
             ].map((feature) => (
-              <div key={feature.title} className="p-6 border border-gray-200 rounded-xl hover:border-gray-300 transition">
+              <div
+                key={feature.title}
+                className="p-6 border border-gray-200 rounded-xl hover:border-gray-300 transition"
+              >
                 <p className="text-3xl mb-3">{feature.icon}</p>
                 <h3 className="font-semibold mb-2">{feature.title}</h3>
                 <p className="text-sm text-gray-600">{feature.desc}</p>
@@ -211,7 +282,10 @@ export default function Page() {
 
           <div className="grid md:grid-cols-3 gap-4">
             {[1, 2, 3].map((img) => (
-              <div key={img} className="h-64 bg-gray-200 rounded-xl overflow-hidden relative group">
+              <div
+                key={img}
+                className="h-64 bg-gray-200 rounded-xl overflow-hidden relative group"
+              >
                 <div className="w-full h-full bg-gradient-to-br from-amber-200 to-orange-100 flex items-center justify-center text-6xl">
                   {["🌿", "☕", "🍃"][img - 1]}
                 </div>
@@ -227,7 +301,9 @@ export default function Page() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">Hours</h3>
+              <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">
+                Hours
+              </h3>
               <div className="space-y-2 text-gray-600">
                 <p>Monday – Friday</p>
                 <p className="font-medium text-gray-900">7:00 AM – 6:00 PM</p>
@@ -236,7 +312,9 @@ export default function Page() {
               </div>
             </div>
             <div>
-              <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">Location</h3>
+              <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">
+                Location
+              </h3>
               <div className="space-y-2 text-gray-600">
                 <p className="font-medium text-gray-900">123 Backyard Lane</p>
                 <p>Downtown District</p>
@@ -244,7 +322,9 @@ export default function Page() {
               </div>
             </div>
             <div>
-              <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">Contact</h3>
+              <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">
+                Contact
+              </h3>
               <div className="space-y-2 text-gray-600">
                 <p className="font-medium text-gray-900">(555) 123-4567</p>
                 <p>hello@thebackyard.cafe</p>
@@ -259,9 +339,15 @@ export default function Page() {
       <section id="contact" className="py-20 px-6 bg-gray-900 text-white">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl font-light mb-4">Stay updated</h2>
-          <p className="text-gray-300 mb-8">Get news about new menu items, events, and specials delivered to your inbox.</p>
+          <p className="text-gray-300 mb-8">
+            Get news about new menu items, events, and specials delivered to
+            your inbox.
+          </p>
 
-          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
+          <form
+            onSubmit={handleSubscribe}
+            className="flex flex-col sm:flex-row gap-3"
+          >
             <input
               required
               type="email"
@@ -278,9 +364,11 @@ export default function Page() {
               {status === "sending" ? "Sending..." : "Subscribe"}
             </button>
           </form>
-          
+
           {status === "sent" && (
-            <p className="mt-3 text-sm text-green-300">✓ Thanks for subscribing!</p>
+            <p className="mt-3 text-sm text-green-300">
+              ✓ Thanks for subscribing!
+            </p>
           )}
         </div>
       </section>
