@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import Footer from "@/components/footer";
 
 export default function Page() {
@@ -27,7 +26,7 @@ export default function Page() {
   }, [status]);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 flex flex-col">
+    <div id="top" className="min-h-screen bg-white text-gray-900 flex flex-col">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -35,18 +34,22 @@ export default function Page() {
             <div className="w-8 h-8 rounded-full border-2 border-gray-900 grid place-items-center text-lg">
               ☕
             </div>
+<<<<<<< HEAD
             <span className="text-lg font-light tracking-wide">
               The Backyard
             </span>
+=======
+            <span className="text-lg font-light tracking-wide">The Backyard Café</span>
+>>>>>>> 77b22fc (fix(layout.tsx, page.tsx): enhance layout with viewport meta tag and theme color; update page structure and navigation links)
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-8 text-sm">
             {[
+              { name: "Home", href: "#top" },
               { name: "About", href: "#about" },
               { name: "Menu", href: "#menu" },
-              { name: "Space", href: "#space" },
-              { name: "Contact", href: "#contact" },
+              { name: "Visit", href: "#contact" },
             ].map((item) => (
               <a
                 key={item.name}
@@ -61,6 +64,7 @@ export default function Page() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close mobile menu" : "Open mobile menu"}
             className="md:hidden text-sm border border-gray-300 rounded px-3 py-1.5 hover:bg-gray-50 transition"
           >
             {menuOpen ? "Close" : "Menu"}
@@ -105,12 +109,18 @@ export default function Page() {
             meaningful conversations. Where every cup is crafted with intention.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium">
-              Visit us today
-            </button>
-            <button className="px-8 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm font-medium">
-              View menu
-            </button>
+            <a
+            href="#contact"
+            className="inline-flex items-center justify-center px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium"
+          >
+            Visit us today
+          </a>
+          <a
+            href="#menu"
+            className="inline-flex items-center justify-center px-8 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm font-medium"
+          >
+            View menu
+          </a>
           </div>
         </div>
       </section>
