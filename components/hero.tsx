@@ -1,11 +1,5 @@
 import React from "react";
 
-interface HeroProps {
-  title: string;
-  subtitle?: string;
-  backgroundImage?: string;
-  children?: React.ReactNode;
-}
 
 const Hero: React.FC<HeroProps> = ({
   title,
