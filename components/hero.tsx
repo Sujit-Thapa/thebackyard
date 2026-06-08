@@ -23,6 +23,9 @@ const Hero: React.FC<HeroProps> = ({
       <div className="absolute inset-0 bg-black/30" />
     )}
     
+
+
+    
     <div className="relative max-w-3xl mx-auto">
       <h1 className="text-5xl md:text-6xl font-light tracking-tight leading-tight mb-6">
         {title}
