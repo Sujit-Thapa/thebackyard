@@ -22,13 +22,7 @@ export const metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "The Backyard",
-    description: "Minimal coffee culture. Exceptional experience.",
-    images: ["https://thebackyard.example.com/og-image.jpg"],
-  },
-};
+
 
 const renderMeta = (
   obj: Record<string, any> = {},
@@ -69,8 +63,6 @@ export default function DefaultLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <title>{title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#111827" />
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords.join(", ")} />
         {renderMeta(openGraph, "og", true)}
