@@ -6,8 +6,15 @@ import "./tailwind.css";
 
 export const metadata = {
   title: "The Backyard - Specialty Coffee & Cafe",
-  description: "A minimalist sanctuary for exceptional coffee, pastries, and meaningful moments. Open for quiet work and connection.",
-  keywords: ["cafe", "coffee", "specialty coffee", "minimalist", "The Backyard"],
+  description:
+    "A minimalist sanctuary for exceptional coffee, pastries, and meaningful moments. Open for quiet work and connection.",
+  keywords: [
+    "cafe",
+    "coffee",
+    "specialty coffee",
+    "minimalist",
+    "The Backyard",
+  ],
   openGraph: {
     title: "The Backyard",
     description: "Minimal coffee culture. Exceptional experience.",
@@ -22,7 +29,13 @@ export const metadata = {
       },
     ],
   },
-
+  twitter: {
+    card: "summary_large_image",
+    title: "The Backyard",
+    description: "Minimal coffee culture. Exceptional experience.",
+    images: ["https://thebackyard.example.com/og-image.jpg"],
+  },
+};
 
 const renderMeta = (
   obj: Record<string, any> = {},
@@ -68,9 +81,7 @@ export default function DefaultLayout({ children }: { children: ReactNode }) {
         {renderMeta(openGraph, "og", true)}
         {renderMeta(twitter, "twitter", false)}
       </head>
-      <body className="bg-white text-gray-900 font-sans">
-        {children}
-      </body>
+      <body className="bg-white text-gray-900 font-sans">{children}</body>
     </html>
   );
 }
