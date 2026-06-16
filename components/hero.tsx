@@ -7,7 +7,22 @@ interface HeroProps {
   children?: React.ReactNode;
 }
 
-
+const Hero: React.FC<HeroProps> = ({
+  title,
+  subtitle,
+  backgroundImage,
+  children,
+}) => (
+  <section
+    className={`relative w-full py-24 px-6 flex flex-col items-center justify-center text-center ${
+      backgroundImage ? "bg-cover bg-center" : "bg-gradient-to-b from-gray-50 to-white"
+    }`}
+    style={backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : {}}
+  >
+    {backgroundImage && (
+      <div className="absolute inset-0 bg-black/30" />
+    )}
+    
 
 
     
