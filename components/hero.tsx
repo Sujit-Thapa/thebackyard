@@ -40,4 +40,4 @@ const Hero: React.FC<HeroProps> = ({
   </section>
 );
 
-export default Hero;
+export defult Hero;
