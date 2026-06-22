@@ -1,7 +1,5 @@
 import type { ReactNode } from "react";
 
-declare module "*.css";
-
 export const metadata = {
   title: "The Backyard - Specialty Coffee & Cafe",
   description:
