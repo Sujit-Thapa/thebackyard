@@ -2,8 +2,6 @@ import type { ReactNode } from "react";
 
 declare module "*.css";
 
-import "./tailwind.css";
-
 export const metadata = {
   title: "The Backyard - Specialty Coffee & Cafe",
   description:
