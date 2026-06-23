@@ -1,6 +1,15 @@
 import type { ReactNode } from "react";
 
-
+export const metadata = {
+  title: "The Backyard - Specialty Coffee & Cafe",
+  description:
+    "A minimalist sanctuary for exceptional coffee, pastries, and meaningful moments. Open for quiet work and connection.",
+  keywords: [
+    "cafe",
+    "coffee",
+    "specialty coffee",
+    "minimalist",
+    "The Backyard",
   ],
   openGraph: {
     title: "The Backyard",
