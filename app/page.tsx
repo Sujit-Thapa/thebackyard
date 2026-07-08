@@ -34,13 +34,9 @@ export default function Page() {
             <div className="w-8 h-8 rounded-full border-2 border-gray-900 grid place-items-center text-lg">
               ☕
             </div>
-<<<<<<< HEAD
             <span className="text-lg font-light tracking-wide">
-              The Backyard
+              The Backyard Café
             </span>
-=======
-            <span className="text-lg font-light tracking-wide">The Backyard Café</span>
->>>>>>> 77b22fc (fix(layout.tsx, page.tsx): enhance layout with viewport meta tag and theme color; update page structure and navigation links)
           </div>
 
           {/* Desktop Menu */}
@@ -110,17 +106,17 @@ export default function Page() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-            href="#contact"
-            className="inline-flex items-center justify-center px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium"
-          >
-            Visit us today
-          </a>
-          <a
-            href="#menu"
-            className="inline-flex items-center justify-center px-8 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm font-medium"
-          >
-            View menu
-          </a>
+              href="#contact"
+              className="inline-flex items-center justify-center px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium"
+            >
+              Visit us today
+            </a>
+            <a
+              href="#menu"
+              className="inline-flex items-center justify-center px-8 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm font-medium"
+            >
+              View menu
+            </a>
           </div>
         </div>
       </section>
