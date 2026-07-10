@@ -60,17 +60,10 @@ export default function Page() {
             <div className="grid h-9 w-9 place-items-center rounded-full border border-gray-900 text-lg">
               ☕
             </div>
-<<<<<<< HEAD
-            <span className="text-lg font-light tracking-wide">
-              The Backyard Café
-            </span>
-          </div>
-=======
             <span className="text-lg font-medium tracking-[0.2em] text-gray-900">
               THE BACKYARD
             </span>
           </a>
->>>>>>> aa5b105 (refactor(layout.tsx, page.tsx, footer.tsx): enhance layout with updated titles, improved structure, and added menu sections)
 
           <div className="hidden gap-8 text-sm text-gray-600 md:flex">
             {[
