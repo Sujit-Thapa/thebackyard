@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Footer from "@/components/footer";
 
 const menuSections = [
   {
@@ -53,7 +54,7 @@ export default function Page() {
   }, [status]);
 
   return (
-    <div id="top" className="min-h-screen bg-stone-50 text-gray-900 flex flex-col">
+    <div id="top" className="flex min-h-screen flex-col bg-stone-50 text-gray-900">
       <nav className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#top" className="flex items-center gap-2">
@@ -110,54 +111,12 @@ export default function Page() {
         )}
       </nav>
 
-<<<<<<< HEAD
-      {/* Hero Section */}
-      <section className="flex-1 flex items-center justify-center py-32 px-6">
-        <div className="text-center max-w-2xl">
-          <p className="text-sm tracking-widest text-gray-500 uppercase mb-4">
-            Welcome to
-          </p>
-          <h1 className="text-6xl md:text-7xl font-light mb-6 leading-tight tracking-tight">
-            The Backyard
-          </h1>
-          <p className="text-xl text-gray-600 font-light leading-relaxed mb-8">
-            A quiet sanctuary for exceptional coffee, fresh pastries, and
-            meaningful conversations. Where every cup is crafted with intention.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition text-sm font-medium"
-            >
-              Visit us today
-            </a>
-            <a
-              href="#menu"
-              className="inline-flex items-center justify-center px-8 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm font-medium"
-            >
-              View menu
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-light mb-6">About us</h2>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                The Backyard was born from a simple belief: that coffee is more
-                than just a beverage. It's a moment. A pause. A connection.
-=======
       <main className="flex-1">
         <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.9),_rgba(249,245,237,0.95))]">
           <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-24 md:py-32">
             <div className="max-w-3xl">
               <p className="text-sm font-medium uppercase tracking-[0.35em] text-amber-700">
                 Slow mornings, warm afternoons
->>>>>>> aa5b105 (refactor(layout.tsx, page.tsx, footer.tsx): enhance layout with updated titles, improved structure, and added menu sections)
               </p>
               <h1 className="mt-4 text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl md:text-7xl">
                 The Backyard Café
