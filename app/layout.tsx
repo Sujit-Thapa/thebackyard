@@ -27,18 +27,15 @@ export const metadata = {
   },
 };
 
-type MetaValue = string | number | boolean | null | undefined;
-type MetaRecord = Record<string, MetaValue | MetaValue[] | MetaRecord | MetaRecord[]>;
-
 const renderMeta = (
-  obj: MetaRecord = {},
+  obj: Record<string, unknown> = {},
   prefix = "og",
   useProperty = true,
 ) =>
   Object.entries(obj).flatMap(([k, v]) => {
     if (k === "images" && Array.isArray(v)) {
       return v.map((it, i) => {
-        const content = typeof it === "object" && it !== null && "url" in it ? String((it as MetaRecord).url ?? "") : String(it);
+        const content = typeof it === "object" && it !== null && "url" in it ? String((it as Record<string, unknown>).url ?? "") : String(it);
         return useProperty ? (
           <meta key={`${prefix}:image:${i}`} property={`${prefix}:image`} content={content} />
         ) : (
