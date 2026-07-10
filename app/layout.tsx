@@ -27,36 +27,35 @@ export const metadata = {
   },
 };
 
+type MetaValue = string | number | boolean | null | undefined;
+type MetaRecord = Record<string, MetaValue | MetaValue[] | MetaRecord | MetaRecord[]>;
+
 const renderMeta = (
-  obj: Record<string, any> = {},
+  obj: MetaRecord = {},
   prefix = "og",
   useProperty = true,
 ) =>
-  Object.entries(obj).flatMap(([k, v]) =>
-    k === "images" && Array.isArray(v) ? (
-      v.map((it: any, i: number) =>
-        useProperty ? (
-          <meta
-            key={`${prefix}:image:${i}`}
-            property={`${prefix}:image`}
-            content={it?.url ?? String(it)}
-          />
+  Object.entries(obj).flatMap(([k, v]) => {
+    if (k === "images" && Array.isArray(v)) {
+      return v.map((it, i) => {
+        const content = typeof it === "object" && it !== null && "url" in it ? String((it as MetaRecord).url ?? "") : String(it);
+        return useProperty ? (
+          <meta key={`${prefix}:image:${i}`} property={`${prefix}:image`} content={content} />
         ) : (
-          <meta
-            key={`${prefix}:image:${i}`}
-            name={`${prefix}:image`}
-            content={String(it)}
-          />
-        ),
-      )
-    ) : (
+          <meta key={`${prefix}:image:${i}`} name={`${prefix}:image`} content={content} />
+        );
+      });
+    }
+
+    const content = typeof v === "string" || typeof v === "number" || typeof v === "boolean" ? String(v) : "";
+    return (
       <meta
         key={`${prefix}-${k}`}
         {...(useProperty ? { property: `${prefix}:${k}` } : { name: `${prefix}:${k}` })}
-        content={String(v)}
+        content={content}
       />
-    ),
-  );
+    );
+  });
 
 export default function DefaultLayout({ children }: { children: ReactNode }) {
   const { title, description, keywords, openGraph, twitter } = metadata;
