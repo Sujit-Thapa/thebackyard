@@ -10,12 +10,6 @@ export default function Page() {
     e.preventDefault();
     setStatus("sending");
 
-    setTimeout(() => {
-      console.log({ email });
-      setStatus("sent");
-      setEmail("");
-    }, 1000);
-  };
 
   useEffect(() => {
     if (status === "sent") {
