@@ -17,6 +17,13 @@ export default function Page() {
     }, 1000);
   };
 
+  useEffect(() => {
+    if (status === "sent") {
+      const timer = setTimeout(() => setStatus("idle"), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
   return (
     <div id="top" className="min-h-screen bg-white text-gray-900 flex flex-col">
       {/* Navigation */}
