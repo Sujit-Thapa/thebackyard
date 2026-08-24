@@ -4,3 +4,6 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  @apply bg-white text-gray-900 antialiased;
+}
