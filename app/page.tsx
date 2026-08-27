@@ -12,16 +12,7 @@ const menuSections = [
       { name: "Cortado", desc: "1:1 espresso and steamed milk", price: "$3.75" },
     ],
   },
-  {
-    title: "Pastries & more",
-    items: [
-      { name: "Croissant", desc: "Buttery and fresh daily", price: "$3.50" },
-      { name: "Seasonal Scone", desc: "With clotted cream & jam", price: "$4.50" },
-      { name: "Blueberry Muffin", desc: "House-baked", price: "$3.75" },
-      { name: "Honey Latte", desc: "Today's special", price: "$4.75" },
-    ],
-  },
-];
+ 
 
 const highlights = [
   { title: "Specialty roasts", text: "Coffee sourced with care from small-batch roasters." },
