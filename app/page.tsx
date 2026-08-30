@@ -6,8 +6,6 @@ export default function Page() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [menuOpen, setMenuOpen] = useState(false);
 
-
-
   useEffect(() => {
     if (status === "sent") {
       const timer = setTimeout(() => setStatus("idle"), 3000);
@@ -15,7 +13,19 @@ export default function Page() {
     }
   }, [status]);
 
-  r
+  return (
+    <div id="top" className="min-h-screen bg-white text-gray-900 flex flex-col">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full border-2 border-gray-900 grid place-items-center text-lg">
+              ☕
+            </div>
+            <span className="text-lg font-light tracking-wide">
+              The Backyard Café
+            </span>
+          </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-8 text-sm">
