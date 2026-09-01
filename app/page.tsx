@@ -10,7 +10,17 @@ const menuSections = [
       { name: "Cappuccino", desc: "Perfectly balanced milk and espresso", price: "$4.25" },
       { name: "Flat White", desc: "Velvety microfoam", price: "$4.50" },
       { name: "Cortado", desc: "1:1 espresso and steamed milk", price: "$3.75" },
-    
+    ],
+  },
+  {
+    title: "Pastries & more",
+    items: [
+      { name: "Croissant", desc: "Buttery and fresh daily", price: "$3.50" },
+      { name: "Seasonal Scone", desc: "With clotted cream & jam", price: "$4.50" },
+      { name: "Blueberry Muffin", desc: "House-baked", price: "$3.75" },
+      { name: "Honey Latte", desc: "Today's special", price: "$4.75" },
+    ],
+  },
 ];
 
 const highlights = [
@@ -24,6 +34,17 @@ export default function Page() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    setTimeout(() => {
+      console.log({ email });
+      setStatus("sent");
+      setEmail("");
+    }, 1000);
+  };
 
   useEffect(() => {
     if (status === "sent") {
