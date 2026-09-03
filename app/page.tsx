@@ -12,6 +12,8 @@ const menuSections = [
       { name: "Cortado", desc: "1:1 espresso and steamed milk", price: "$3.75" },
     ],
   },
+
+  
   {
     title: "Pastries & more",
     items: [
