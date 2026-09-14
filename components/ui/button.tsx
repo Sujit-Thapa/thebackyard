@@ -7,7 +7,7 @@ type ButtonProps = {
   className?: string;
   type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary" | "outline";
-};
+}
 
 const Button: React.FC<ButtonProps> = ({
   children,
