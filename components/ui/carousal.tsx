@@ -1,10 +1,15 @@
+"use client";
+
+import Image from "next/image";
 import React, { useState } from "react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 interface CarouselProps {
   images: string[];
+  alt?: string;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ images }) => {
+const Carousel: React.FC<CarouselProps> = ({ images, alt = "Gallery image" }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
@@ -23,10 +28,12 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
     <div className="relative w-full">
       <div className="relative h-96 bg-gray-100 rounded-lg overflow-hidden">
         {images.length > 0 && (
-          <img
+          <Image
             src={images[currentIndex]}
-            alt={`Slide ${currentIndex}`}
-            className="w-full h-full object-cover"
+            alt={`${alt} ${currentIndex + 1} of ${images.length}`}
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
         )}
       </div>
@@ -34,23 +41,30 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
       {images.length > 1 && (
         <>
           <button
+            type="button"
             onClick={prevSlide}
+            aria-label="Previous slide"
             className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white w-10 h-10 rounded-full flex items-center justify-center transition"
           >
-            ←
+            <FiChevronLeft />
           </button>
           <button
+            type="button"
             onClick={nextSlide}
+            aria-label="Next slide"
             className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white w-10 h-10 rounded-full flex items-center justify-center transition"
           >
-            →
+            <FiChevronRight />
           </button>
 
           <div className="flex justify-center gap-2 mt-4">
             {images.map((_, index) => (
               <button
                 key={index}
+                type="button"
                 onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to slide ${index + 1}`}
+                aria-current={index === currentIndex}
                 className={`w-2 h-2 rounded-full transition ${
                   index === currentIndex ? "bg-gray-900" : "bg-gray-300"
                 }`}
