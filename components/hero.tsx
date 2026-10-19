@@ -19,7 +19,6 @@ const Hero: React.FC<HeroProps> = ({
 
   return (
     <section
-      role="region"
       aria-labelledby={titleId}
       className="relative w-full py-24 px-6 flex flex-col items-center justify-center text-center overflow-hidden"
     >
@@ -36,7 +35,7 @@ const Hero: React.FC<HeroProps> = ({
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white" aria-hidden="true" />
       )}
 
-      <div className="relative max-w-3xl mx-auto fadeIn">
+      <div className="relative max-w-3xl mx-auto fade-in-up">
         <h1
           id={titleId}
           className={`text-4xl sm:text-5xl md:text-6xl font-light leading-tight mb-6 tracking-tight md:tracking-wide ${
@@ -65,13 +64,6 @@ const Hero: React.FC<HeroProps> = ({
         )}
       </div>
 
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .fadeIn { animation: fadeIn 700ms ease-out both; }
-      `}</style>
     </section>
   );
 };
