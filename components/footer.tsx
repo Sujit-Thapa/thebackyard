@@ -1,22 +1,40 @@
-import React from "react";
+import { FaFacebookF, FaInstagram, FaTiktok, FaXTwitter } from "react-icons/fa6";
+import { GiCampCookingPot } from "react-icons/gi";
 
-const Footer: React.FC = () => (
-  <footer className="w-full border-t border-gray-200 bg-white">
-    <div className="mx-auto max-w-4xl px-6 py-8">
-      <div className="flex items-center justify-center gap-3">
-        <div className="grid h-8 w-8 place-items-center rounded-full bg-gray-900 text-sm text-white">☕</div>
-        <span className="text-sm font-medium tracking-[0.2em]">THE BACKYARD</span>
+const socials = [
+  { Icon: FaInstagram, label: "Instagram", href: "#" },
+  { Icon: FaFacebookF, label: "Facebook", href: "#" },
+  { Icon: FaTiktok, label: "TikTok", href: "#" },
+  { Icon: FaXTwitter, label: "X", href: "#" },
+];
+
+export default function Footer() {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-inner">
+          <a href="#top" className="brand">
+            <span className="brand-mark" aria-hidden="true">
+              <GiCampCookingPot />
+            </span>
+            The Backyard
+          </a>
+          <nav className="footer-links" aria-label="Footer">
+            <a href="#menu">Menu</a>
+            <a href="#experience">Experience</a>
+            <a href="#specials">Specials</a>
+            <a href="#reserve">Reserve</a>
+          </nav>
+          <div className="socials">
+            {socials.map(({ Icon, label, href }) => (
+              <a key={label} href={href} aria-label={label}>
+                <Icon />
+              </a>
+            ))}
+          </div>
+        </div>
+        <p className="copyright">© {new Date().getFullYear()} The Backyard Kitchen &amp; Bar</p>
       </div>
-
-      <div className="mt-4 flex items-center justify-center gap-6 text-sm text-gray-500">
-        <a href="#about" className="transition-colors hover:text-gray-900">About</a>
-        <a href="#menu" className="transition-colors hover:text-gray-900">Menu</a>
-        <a href="#contact" className="transition-colors hover:text-gray-900">Contact</a>
-      </div>
-
-      <p className="mt-6 text-center text-xs text-gray-400">© 2026 The Backyard Café</p>
-    </div>
-  </footer>
-);
-
-export default Footer;
+    </footer>
+  );
+}
