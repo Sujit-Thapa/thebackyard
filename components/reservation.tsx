@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
+import OpenStatus from "./open-status";
 import { FiCalendar, FiCheck, FiClock, FiMail, FiMapPin, FiPhone, FiUsers } from "react-icons/fi";
 
 type Status = "idle" | "sending" | "sent";
@@ -34,13 +35,14 @@ export default function Reservation() {
   return (
     <section id="reserve" className="section reserve">
       <div className="container reserve-grid">
-        <div>
+        <div data-reveal>
           <span className="eyebrow">Reservations</span>
           <h2 className="section-title">Save your seat by the fire.</h2>
           <p className="section-sub">
             Walk-ins are always welcome, but weekends fill fast. Book ahead and we&apos;ll have your
             table glowing.
           </p>
+          <OpenStatus />
           <ul className="info-list">
             <li>
               <FiClock aria-hidden="true" />
@@ -73,7 +75,7 @@ export default function Reservation() {
           </ul>
         </div>
 
-        <div className="form-card">
+        <div className="form-card" data-reveal>
           <form className="form-card-inner" onSubmit={handleSubmit}>
             <h3>Book a table</h3>
             <div className="field">

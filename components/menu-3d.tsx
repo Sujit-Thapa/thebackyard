@@ -71,7 +71,7 @@ export default function Menu3D() {
   return (
     <section id="menu" className="section">
       <div className="container">
-        <div className="section-head">
+        <div className="section-head" data-reveal>
           <span className="eyebrow">Our menu</span>
           <h2 className="section-title">Flip a plate, find your favorite.</h2>
           <p className="section-sub">
@@ -79,7 +79,7 @@ export default function Menu3D() {
           </p>
         </div>
 
-        <div className="tabs" role="tablist" aria-label="Menu categories">
+        <div className="tabs" role="tablist" data-reveal aria-label="Menu categories">
           {categories.map(({ id, label, Icon }) => (
             <button
               key={id}
@@ -99,7 +99,7 @@ export default function Menu3D() {
           ))}
         </div>
 
-        <div id="menu-panel" role="tabpanel" aria-labelledby={`tab-${active}`} className="menu-grid">
+        <div id="menu-panel" role="tabpanel" aria-labelledby={`tab-${active}`} className="menu-grid" data-reveal="stagger">
           {current.dishes.map(({ name, desc, price, tags, Icon, color }, i) => (
             <button
               key={`${active}-${name}`}

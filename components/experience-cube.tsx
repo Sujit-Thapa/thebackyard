@@ -20,7 +20,7 @@ export default function ExperienceCube() {
   return (
     <section id="experience" className="section experience">
       <div className="container experience-grid">
-        <div>
+        <div data-reveal>
           <span className="eyebrow">The experience</span>
           <h2 className="section-title">More than dinner. It&apos;s an evening.</h2>
           <p className="section-sub" style={{ marginBottom: 36 }}>
@@ -41,7 +41,7 @@ export default function ExperienceCube() {
           </ul>
         </div>
 
-        <div className="cube-scene" role="img" aria-label="Rotating cube showing the six sides of The Backyard experience">
+        <div className="cube-scene" data-reveal role="img" aria-label="Rotating cube showing the six sides of The Backyard experience">
           <div className="cube">
             {faces.map(({ Icon, label }) => (
               <div key={label} className="cube-face">

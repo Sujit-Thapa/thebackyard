@@ -13,13 +13,13 @@ export default function Specials() {
   return (
     <section id="specials" className="section">
       <div className="container">
-        <div className="section-head">
+        <div className="section-head" data-reveal>
           <span className="eyebrow">Chef&apos;s specials</span>
           <h2 className="section-title">Plates that jump off the table.</h2>
           <p className="section-sub">Move your cursor across the cards. Limited servings every night.</p>
         </div>
 
-        <div className="specials-grid">
+        <div className="specials-grid" data-reveal="stagger">
           {specials.map(({ Icon, color, badge, name, text, price }) => (
             <TiltCard key={name} style={{ "--c": color } as CSSProperties}>
               <span className="tilt-badge">{badge}</span>

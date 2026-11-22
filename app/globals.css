@@ -207,6 +207,15 @@ a {
   color: var(--text);
 }
 
+.nav-links a.is-active {
+  color: var(--text);
+}
+
+.mobile-menu a.is-active {
+  color: var(--accent);
+}
+
+.nav-links a.is-active::after,
 .nav-links a:hover::after {
   transform: scaleX(1);
 }
@@ -687,8 +696,6 @@ a {
   color: inherit;
   text-align: left;
   border-radius: var(--radius);
-  animation: card-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  animation-delay: calc(var(--i) * 80ms);
 }
 
 .flip-inner {
@@ -1217,6 +1224,285 @@ a {
   font-size: 0.8rem;
   opacity: 0.7;
 }
+
+/* ---------- Open / closed badge ---------- */
+.open-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+}
+
+.hero .open-status {
+  display: flex;
+  width: fit-content;
+}
+
+.open-status i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8a7b6c;
+}
+
+.open-status.is-open {
+  color: #8fe0a6;
+  border-color: rgba(88, 180, 110, 0.35);
+}
+
+.open-status.is-open i {
+  background: #58b46e;
+  box-shadow: 0 0 0 0 rgba(88, 180, 110, 0.6);
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 10px rgba(88, 180, 110, 0);
+  }
+}
+
+/* ---------- Testimonials (3D ring) ---------- */
+.reviews {
+  background: var(--bg-2);
+  overflow: hidden;
+}
+
+.section-head-center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.carousel {
+  --card-w: 320px;
+  --radius-3d: 330px;
+}
+
+.carousel-stage {
+  height: 340px;
+  perspective: 1400px;
+  display: grid;
+  place-items: center;
+}
+
+.carousel-ring {
+  position: relative;
+  width: var(--card-w);
+  height: 260px;
+  transform-style: preserve-3d;
+  transform: translateZ(calc(var(--radius-3d) * -1)) rotateY(var(--rot));
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.review-card {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: 24px;
+  background: linear-gradient(160deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  transform: rotateY(var(--a)) translateZ(var(--radius-3d));
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  opacity: 0.35;
+  transition: opacity 0.6s ease, border-color 0.6s ease;
+}
+
+.review-card.is-active {
+  opacity: 1;
+  border-color: rgba(232, 162, 74, 0.4);
+}
+
+.review-card blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.review-card figcaption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.review-card figcaption strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #1a0f07;
+  font-weight: 700;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.carousel-btn {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background: var(--surface-2);
+  transform: scale(1.06);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 999px;
+  border: 0;
+  background: var(--surface-2);
+  cursor: pointer;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.carousel-dots button.is-active {
+  width: 26px;
+  background: var(--accent);
+}
+
+.carousel-btn:focus-visible,
+.carousel-dots button:focus-visible,
+.to-top:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .carousel {
+    --card-w: 260px;
+    --radius-3d: 270px;
+  }
+
+  .carousel-stage {
+    height: 360px;
+  }
+
+  .carousel-ring {
+    height: 300px;
+  }
+
+  .review-card blockquote {
+    font-size: 0.98rem;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Back to top ---------- */
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #1a0f07;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 0 -1px #8a3a1b, 0 14px 24px -8px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px) perspective(300px) rotateX(30deg);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.to-top.is-shown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.to-top.is-shown:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- Scroll reveal (only once JS is running) ---------- */
+.reveal-ready [data-reveal]:not([data-reveal="stagger"]) {
+  opacity: 0;
+  transform: perspective(900px) rotateX(16deg) translateY(50px);
+  transform-origin: center bottom;
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-ready [data-reveal].is-visible:not([data-reveal="stagger"]) {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger: children flip up one by one (backwards fill keeps hover/tilt transforms working) */
+.reveal-ready [data-reveal="stagger"]:not(.is-visible) > * {
+  opacity: 0;
+}
+
+.reveal-ready [data-reveal="stagger"].is-visible > * {
+  animation: card-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+[data-reveal="stagger"] > :nth-child(2) { animation-delay: 90ms; }
+[data-reveal="stagger"] > :nth-child(3) { animation-delay: 180ms; }
+[data-reveal="stagger"] > :nth-child(4) { animation-delay: 270ms; }
+[data-reveal="stagger"] > :nth-child(5) { animation-delay: 360ms; }
+[data-reveal="stagger"] > :nth-child(6) { animation-delay: 450ms; }
 
 /* ---------- Legacy Hero component ---------- */
 @keyframes fade-in-up {

@@ -2,6 +2,7 @@
 
 import { useRef, type CSSProperties, type MouseEvent } from "react";
 import { FiArrowRight, FiStar } from "react-icons/fi";
+import OpenStatus from "./open-status";
 import {
   GiChiliPepper,
   GiCheeseWedge,
@@ -56,6 +57,7 @@ export default function Hero3D() {
           <span className="eyebrow">
             <GiWineGlass aria-hidden="true" /> Wood-fired kitchen &amp; bar
           </span>
+          <OpenStatus />
           <h1 className="hero-title">
             Food you can
             <span>almost taste.</span>

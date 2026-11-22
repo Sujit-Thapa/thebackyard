@@ -23,6 +23,7 @@ export default function Footer() {
             <a href="#menu">Menu</a>
             <a href="#experience">Experience</a>
             <a href="#specials">Specials</a>
+            <a href="#reviews">Reviews</a>
             <a href="#reserve">Reserve</a>
           </nav>
           <div className="socials">
