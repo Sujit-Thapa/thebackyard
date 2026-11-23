@@ -282,14 +282,23 @@ a {
 }
 
 /* ---------- Hero ---------- */
+/* Registered so the glow colour can transition when the dish changes */
+@property --hero-glow {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(232, 162, 74, 0.2);
+}
+
 .hero {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 120px 0 80px;
   overflow: hidden;
+  transition: --hero-glow 1.2s ease;
   background:
-    radial-gradient(circle at 75% 40%, rgba(232, 162, 74, 0.18), transparent 45%),
+    radial-gradient(circle at 75% 40%, var(--hero-glow), transparent 45%),
     radial-gradient(circle at 10% 90%, rgba(217, 87, 43, 0.12), transparent 40%),
     var(--bg);
 }
@@ -584,7 +593,14 @@ a {
 
   .scene {
     height: 440px;
+  }
+
+  .hero-visual {
     order: -1;
+  }
+
+  .scroll-cue {
+    display: none;
   }
 
   .plate-stage {
@@ -1242,6 +1258,147 @@ a {
 .hero .open-status {
   display: flex;
   width: fit-content;
+}
+
+/* Reserve space so the badge doesn't shift the layout when it appears */
+.hero-status {
+  min-height: 48px;
+}
+
+/* ---------- Hero: intro, dish picker, scroll cue ---------- */
+.hero-intro > * {
+  animation: hero-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+.hero-intro > :nth-child(2) { animation-delay: 80ms; }
+.hero-intro > :nth-child(3) { animation-delay: 160ms; }
+.hero-intro > :nth-child(4) { animation-delay: 260ms; }
+.hero-intro > :nth-child(5) { animation-delay: 360ms; }
+.hero-intro > :nth-child(6) { animation-delay: 460ms; }
+
+.hero-visual {
+  animation: hero-visual-in 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s backwards;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: perspective(800px) rotateX(-20deg) translateY(30px);
+  }
+}
+
+@keyframes hero-visual-in {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) translateZ(-200px) rotateY(-20deg);
+  }
+}
+
+.dish-swap {
+  transform-style: preserve-3d;
+  animation: dish-drop 0.9s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+
+@keyframes dish-drop {
+  from {
+    opacity: 0;
+    transform: translateZ(160px) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.dish-picker {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: -20px;
+  position: relative;
+  z-index: 1;
+}
+
+.dish-picker button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(31, 24, 19, 0.7);
+  backdrop-filter: blur(8px);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.dish-picker button svg {
+  font-size: 1.1rem;
+}
+
+.dish-picker button:hover {
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.dish-picker button[aria-pressed="true"] {
+  color: var(--accent);
+  border-color: rgba(232, 162, 74, 0.5);
+  background: var(--accent-soft);
+}
+
+.dish-picker button:focus-visible,
+.scroll-cue:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 42px;
+  border-radius: 14px;
+  border: 2px solid rgba(246, 236, 225, 0.35);
+  animation: hero-in 0.9s ease 1s backwards;
+}
+
+.scroll-cue span {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--accent);
+  animation: scroll-dot 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-dot {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (max-height: 720px) {
+  .scroll-cue {
+    display: none;
+  }
 }
 
 .open-status i {
