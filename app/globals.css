@@ -1296,17 +1296,13 @@ a {
 
 .dish-swap {
   transform-style: preserve-3d;
-  animation: dish-drop 0.9s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+  animation: dish-drop 0.9s cubic-bezier(0.3, 1.4, 0.5, 1) backwards;
 }
 
+/* Scale only: animating opacity here would flatten the 3D food items */
 @keyframes dish-drop {
   from {
-    opacity: 0;
-    transform: translateZ(160px) scale(0.6);
-  }
-  to {
-    opacity: 1;
-    transform: none;
+    transform: translateZ(160px) scale(0);
   }
 }
 
