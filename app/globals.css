@@ -1391,6 +1391,21 @@ a {
   }
 }
 
+@media (max-width: 960px) {
+  .dish-picker {
+    margin-top: 10px;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dish-picker button {
+    padding: 7px 10px;
+    font-size: 0.78rem;
+    gap: 4px;
+  }
+}
+
 @media (max-height: 720px) {
   .scroll-cue {
     display: none;
